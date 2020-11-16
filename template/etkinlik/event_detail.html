@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{%block title%}
+{{event.title}} |
+{%endblock%}
+{% block content %}
+    <div class="container mt-4">
+        <center>
+            <h1><b>{{event.title}}</b></h1>
+            <h3><i>{{event.exp}}</i></h3>
+
+            <hr>
+            <img src="/media/{{event.img_event}}" class="img-fluid mt-1" style="height:330px; width:550px;">
+        </center>
+        <hr>
+        <br>
+        <div class="icerik">{{event.detail}}</div>
+        <hr>
+        <br>
+
+        <div class="alt-bol">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Yardım mı İhtiyacınız Var?</h5>
+                  <p class="card-text">Aşağıdaki butona tıklayarak destek sayfamıza hızlıca ulaşabilirsiniz</p>
+                  <a href="#" class="btn btn-primary">Destek Talebi</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Bağış Yaparak Destek Ol</h5>
+                  <p class="card-text">Etkinliklerimize uzaktan bağış yaparak da bizlere destek olabilirsiniz</p>
+                  <a href="#" class="btn btn-primary">Bağış Yap</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+{% endblock %}

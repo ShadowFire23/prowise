@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+    {% block css %}
+        .jumbotron{
+            max-height:150px;
+        }
+    {% endblock %}
+    {%block title%}
+    {{posts.title}} |
+    {%endblock%}
+    {% block content %}
+    <div class="container mt-4">
+        <center>
+            <h1><b>{{posts.title}}</b></h1>
+            <h3><i>{{posts.meta}}</i></h3>
+
+            <small>Yazan: {{posts.author}}</small>
+            <hr>
+            <img src="/media/{{posts.top_photo}}" class="img-fluid mt-1" style="height:330px; width:550px;">
+        </center>
+        <hr>
+        <div class="icerik">
+            {{posts.text}}
+        </div>
+
+        <!-- Commnet List Part -->
+
+
+            {% for comment in comments %}
+            
+                <div class="jumbotron">
+                    <h5>{{comment.yazan}}</h5>
+                    <hr>
+                    <p>{{comment.yorum}}</p>
+                </div>
+
+            {% endfor %}
+
+
+            <br>
+            <hr>
+        <!-- Comment Create Part -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Adınız:</label>
+                    {{form.yazan}}
+                </div>
+                <div class="form-group col-md-6">
+                    <label>E-Mail Adresiniz:</label>
+                    {{form.emmail}}
+                </div>
+                <div class="form-group">
+                    <label>Yorumunuz:</label>
+                    {{form.yorum}}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Yorum Yap</button>
+        </form>
+
+    </div>
+
+    {% endblock %}

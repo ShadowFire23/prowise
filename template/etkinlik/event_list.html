@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+    {%block title%}Events | {%endblock%}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h4 class="display-4">Öne Çıkarılan Etkinlik</h4>
+        <p class="lead mb-5">Bu etkinlik şuandaki en önemli ve popüler etkinliktir. Katılabilen herkesin katılmasını isteriz</p>
+        {% if not events_t %}
+            <h2>Şu anda öne çıkarılan yok</h2>
+        {% else %}
+        {% for event_t in events_t %}
+        <a href="{% url 'event-detail' event_t.url_sistem %}" style="color:black;">
+            <div class="card mb-3" style="max-width:700px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/media/{{ event_t.img_event }}" class="card-img" alt="etkinlik_foto">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{event_t.title}}</h5>
+                            <p class="card-text">{{event_t.exp}}</p>
+                            <p class="card-text"><small class="text-muted">Etkinlik Tarihi: {{event_t.event_date}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+
+    {% for event_f in events_f %}
+    <a href="{% url 'event-detail' event_t.url_sistem %}" style="color:black;">
+        <div class="card mb-3" style="max-width:700px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="/media/{{ event_f.img_event }}" class="card-img" alt="etkinlik_foto">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{event_f.title}}</h5>
+                        <p class="card-text">{{event_f.exp}}</p>
+                        <p class="card-text"><small class="text-muted">Etkinlik Tarihi: {{event_f.event_date}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

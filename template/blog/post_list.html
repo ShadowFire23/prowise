@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+    {%block title%}Blog | {%endblock%}
+    {% block content %}
+    <!-- Blog Index Sayfa -->
+
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h4 class="text-center">Blog Yazıları</h4>
+                <hr>
+                <div class="card-deck">
+
+                {% for post in posts %}
+                    <a href="{% url 'post-detail' post.url_sistem %}" style="color:black;">
+                        <div class="card  ml-5">
+                            <img class="card-img-top img-fluid" src="/media/{{post.top_photo}}" style="width:250px; height:214px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{post.title}}</h5>
+                                <p class="card-text text-center">{{post.meta}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted text-primary">>Yazıyı Oku</small>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
