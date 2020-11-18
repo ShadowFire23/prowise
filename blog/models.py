@@ -10,6 +10,7 @@ class Post(models.Model):
     top_photo = models.ImageField()
     url_sistem = models.SlugField(blank=True, null=True)
     status = models.BooleanField(default=False)
+    news = models.BooleanField(default=False)
 
     def publish(self):
         self.published_date = timezone.now()

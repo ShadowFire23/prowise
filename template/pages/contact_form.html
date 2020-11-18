@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{%block title%}
+İletişim |
+{%endblock%}
+{% block content %}
+<div class="container">
+    <div class="card mt-4">
+        <h5 class="card-title text-center">Destek Formu</h5>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Konu Başlığı:</label>
+                    {{form.title}}
+                </div>
+                <div class="form-group">
+                    <label>İsim - Soyisim:</label>
+                    {{form.sender}}
+                </div>
+                <div class="form-group">
+                    <label>E-Mail Adresiniz:</label>
+                    {{form.mail}}
+                </div>
+                <div class="form-group">
+                    <label>Mesajınızı Yazınız:</label>
+                    <small class="form-text text-muted">Olabildiğince açıklayıcı anlatınız.</small>
+                    {{form.text}}
+                </div>
+                <button class="btn btn-lg btn-primary" type="submit">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

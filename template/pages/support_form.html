@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{%block title%}
+Destek |
+{%endblock%}
+{% block content %}
+    <div class="container">
+        <div class="card mt-4">
+            <h5 class="card-title text-center">Destek Formu</h5>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Destek Konusu:</label>
+                        {{form.subject}}
+                    </div>
+                    <div class="form-group">
+                        <label>Destek Başlığı:</label>
+                        {{form.title}}
+                    </div>
+                    <div class="form-group">
+                        <label>İsim - Soyisim:</label>
+                        {{form.sender}}
+                    </div>
+                    <div class="form-group">
+                        <label>E-Mail Adresiniz:</label>
+                        {{form.mail}}
+                    </div>
+                    <div class="form-group">
+                        <label>Sorunuzu Anlatınız:</label>
+                        <small class="form-text text-muted">Olabildiğince detaylı açıklayınız.</small>
+                        {{form.text}}
+                    </div>
+                    <button class="btn btn-lg btn-primary" type="submit">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

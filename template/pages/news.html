@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{%block title%}
+Haberler |
+{%endblock%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h4 class="text-center">Haber Yazıları</h4>
+            <hr>
+            <div class="card-deck">
+
+            {% for new in news %}
+                <a href="{% url 'post-detail' new.url_sistem %}" style="color:black;">
+                    <div class="card  ml-5">
+                        <img class="card-img-top img-fluid" src="/media/{{new.top_photo}}" style="width:250px; height:214px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{new.title}}</h5>
+                            <p class="card-text text-center">{{new.meta}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted text-primary">>Yazıyı Oku</small>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
